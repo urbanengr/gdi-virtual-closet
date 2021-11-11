@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter,
-  Switch,
+  Routes,
   Route,
   Link,
   useRouteMatch
@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Switch>
+        <Routes>
           <Route path='/' element={<Login/>} />
           {/* <Route exact path="/">
             <Login />
@@ -22,7 +22,7 @@ function App() {
           <Route path="/users">
             <Users />
           </Route> */}
-        </Switch>
+        </Routes>
       </BrowserRouter>
     </div>
   );
