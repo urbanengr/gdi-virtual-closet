@@ -2,14 +2,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Row, Col, Button, Form} from 'react-bootstrap';
 import ClosetCategories from './containers/closet-category-buttons/category-buttons.js';
-
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <ClosetCategories/>
-
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -30,9 +27,8 @@ function App() {
             Submit
           </Button>
         </Form>
-        
-
       </header>
+        <ClosetCategories/>
     </div>
   );
 }
