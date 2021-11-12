@@ -1,12 +1,38 @@
 import React, {Component} from 'react';
+import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+import axios from 'axios';
+import { withStyles } from "@material-ui/core/styles";
 
+const styles = (theme) => ({
+    paper: {
+        marginTop: theme.spacing(8),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    form: {
+        width: '100%',
+        marginTop: theme.spacing(1)
+    },
+    submit: {
+        margin: theme.spacing(3, 0, 2)
+    },
+    customError: {
+        color: 'red',
+        fontSize: '0.8rem',
+        marginTop: 15,
+        display:'block'
+    },
+});
 class Signup extends Component{
     constructor(props) {
         super(props);
 
         this.state = {
+            name: '',
             email: '',
             password: '',
+            zipcode: '',
             errors: [],
             loading: false
         };
@@ -36,19 +62,24 @@ class Signup extends Component{
 
         const userData = {
             email: this.state.email,
-            passsword: this.state.password
+            passsword: this.state.password,
+            name:this.state.name,
+            zipcode:this.state.zipcode
+
         };
 
             
-        axios.post('/login', userData)
+        axios.post('/signup', userData)
             .then((response) => {
-                
-                localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
-                this.setState({
-                    loading: false
-                });
+            if(response.success){
+                // take user to home
+            }
+                // localStorage.setItem('AuthToken', `Bearer ${response.data.token}`);
+                // this.setState({
+                //     loading: false
+                // });
 
-                this.props.history.push('/');
+                // this.props.history.push('/');
             })
             .catch((error) => {
                 this.setState({
@@ -67,8 +98,13 @@ class Signup extends Component{
                 <Row>
                     <Col xs={6}>
                         <div className={classes.paper}>
-                            <h2>Login</h2>
+                            <h2>Signup</h2>
                             <Form className={classes.form} noValidate>
+                            <Form.Group className="mb-3" controlId="name" autoComplete="name">
+                                    <Form.Label>Name</Form.Label>
+                                    <Form.Control type="string" placeholder="Name" />
+                                </Form.Group>
+
                                 <Form.Group className="mb-3" controlId="email" autoComplete="email">
                                     <Form.Label>Email address</Form.Label>
                                     <Form.Control type="email" placeholder="Enter email" />
@@ -76,6 +112,10 @@ class Signup extends Component{
                                 <Form.Group className="mb-3" controlId="password">
                                     <Form.Label>Password</Form.Label>
                                     <Form.Control type="password" placeholder="Password" />
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="zipcode">
+                                    <Form.Label>Zipcode</Form.Label>
+                                    <Form.Control type="number" placeholder="Zipcode" />
                                 </Form.Group>
                                 <span className={classes.customError}> Add Simple Validation</span> 
 
@@ -95,4 +135,7 @@ class Signup extends Component{
                 </Row>
             </Container>
         )
-export default Signup;
+    }
+
+}
+export default withStyles(styles)(Signup);
