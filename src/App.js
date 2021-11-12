@@ -2,10 +2,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './view/pages/login/login.js';
-import Home from './view/pages/home/home.js';
- 
-import Signup from './view/pages/signup/signup.js';
+import Login from './views/pages/login/login.js';
+import Home from './views/pages/home/home.js';
+import Signup from './views/pages/signup/signup.js';
 
  import { Container, Navbar, Nav } from 'react-bootstrap';
 
