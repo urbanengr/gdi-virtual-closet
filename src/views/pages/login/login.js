@@ -116,7 +116,7 @@ class login extends Component {
                 </Row>
                 <Row>
                     <Col xs={7}>
-                        <span className="mt-3"> Not yet a member? <a href="/signup">Sign up</a></span> 
+                        <span className="mt-3"> Not yet a member? <a href="/signup" >Sign up</a></span> 
                     </Col>
                 </Row>
             </Container>
